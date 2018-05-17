@@ -5,6 +5,10 @@ from flask import render_template,session,redirect,url_for,request,send_from_dir
 from wechatpy.utils import check_signature
 from wechatpy.exceptions import InvalidSignatureException
 from wechatpy import parse_message
+from wechatpy.replies import TextReply,ImageReply,VoiceReply,ArticlesReply
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
 
 @main.route('/',methods=['GET','POST'])
 def index():
@@ -23,9 +27,37 @@ def index():
             return 'invalid signature'
         return echostr
     else:
-        print request.args
-        print request.values
-        return ''
+        xml = request.data
+        print xml
+        msg = parse_message(xml)
+        if msg.type == 'text':
+            print msg.content
+            reply =  TextReply(message=msg)
+            reply.content = 'reply 测试'
+            xml_reply = reply.render()
+            return xml_reply
+        elif msg.type == 'image':
+            reply = ImageReply(message=msg)
+            reply.media_id = msg.media_id
+            xml_reply = reply.render()
+            return xml_reply
+        elif msg.type == 'voice':
+            # reply = VoiceReply(message=msg)
+            # reply.media_id = msg.media_id
+            reply = TextReply(message=msg)
+            reply.content = msg.recognition
+            xml_reply = reply.render()
+            return xml_reply
+        elif msg.type == 'video':
+            pass
+        elif msg.type == 'location':
+            pass
+        elif msg.type == 'link':
+            pass
+        elif msg.type == 'shortvideo':
+            pass
+        else:
+            return ''
 
 @main.route('/test/<name>')
 @main.route('/test/')
