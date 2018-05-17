@@ -30,5 +30,6 @@ def index():
 @main.route('/test/<name>')
 @main.route('/test/')
 def test(name=None):
-    #print str(url_for('static',filename = name,_external=True))
-    return render_template('user.html',name = name)
+    if name:
+        return 'Hello ' + name
+    return 'Hello Stranger'
