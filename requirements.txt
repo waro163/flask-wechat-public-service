@@ -37,7 +37,7 @@ lxml==3.3.3
 Mako==1.0.7
 MarkupSafe==1.0
 MySQL-python==1.2.3
-numpy==1.8.2
+numpy==1.21.0
 oauthlib==0.6.1
 oneconf==0.3.7.14.4.1
 optionaldict==0.1.1
