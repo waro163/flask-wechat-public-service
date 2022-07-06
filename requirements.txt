@@ -26,7 +26,7 @@ Flask-Moment==0.5.1
 Flask-Script==2.0.6
 Flask-SQLAlchemy==2.2
 Flask-WTF==0.14.2
-html5lib==0.999
+html5lib==0.999999999
 httplib2==0.8
 idna==2.6
 ipaddress==1.0.22
