@@ -43,7 +43,7 @@ oneconf==0.3.7.14.4.1
 optionaldict==0.1.1
 PAM==0.4.2
 pexpect==3.1
-Pillow==2.3.0
+Pillow==9.3.0
 piston-mini-client==0.7.5
 pycparser==2.18
 pycrypto==2.6.1
